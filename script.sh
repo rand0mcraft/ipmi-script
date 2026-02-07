@@ -1,12 +1,8 @@
 #!/bin/bash
 source .var
 
-read -p "Enter IDRAC IP adress: " ip
+x=$( printf "%x" $2 )
 
-read -p "Enter fan speed: " speed
+ipmitool -I lanplus -H $1 -U $USER -P $PASSWORD raw 0x30 0x30 0x02 0xff 0x$x
 
-x=$( printf "%x" $speed )
-
-ipmitool -I lanplus -H $ip -U $USER -P $PASSWORD raw 0x30 0x30 0x02 0xff 0x$x
-
-echo "Speed of $ip is set to $speed"
+echo "Speed of $1 is set to $2"
