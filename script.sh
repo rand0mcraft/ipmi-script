@@ -1,5 +1,5 @@
 #!/bin/bash
-source .var
+source .env
 
 x=$( printf "%x" $2 )
 
